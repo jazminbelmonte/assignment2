@@ -8,9 +8,11 @@
 
 class Date {
 public:
-  // TODO: Define one argument contructor here
+  //TODO: Define one argument constructor here (year)
+  Date(int y, int m = 1, int d = 1): year(y), month(m), day(d){}
 
-  // TODO: Define two argument contructor here
+  //TODO: Define two argument constructor here (year and month)
+  Date(int y, int m, int d = 1): year(y), month(m), day(d){}
 
   Date(int y, int m, int d): year(y), month(m), day(d){}
 
@@ -43,7 +45,7 @@ public:
   }
 
   std::string str() {
-    // TODO: complete this function implemenation here.
+    // TODO: complete this function implementation here.
     return "";
   }
 
@@ -63,8 +65,24 @@ public:
   }
 
   // TODO: Overload operator+ here
+  friend std::ostream& operator+(std::ostream& out, Date& date)
+  {
+//    for(int v : range.nums) {
+//      out << v << " ";
+//    }
+//    out << std::endl;
+      return out;
+  }
 
   // TODO: overload operator<< here
+  friend std::ostream& operator<<(std::ostream& out, Date& date)
+  {
+//    for(int v : range.nums) {
+//      out << v << " ";
+//    }
+//    out << std::endl;
+    return out;
+  }
 
   // TODO: define fiveHolidays function here
 
@@ -79,3 +97,26 @@ private:
 };
 
 #endif
+
+
+/*
+●Add a second constructor that takes only a single ​year​ argument and
+ initializes bothmonth​ and ​day​ to ​1​.
+
+ ●Add a third constructor that takes two arguments for ​year​ and ​month​
+ and initializesday​ to ​1​.
+
+ ●Overload ​operator+​ such that given a date object ​d​, the expression ​
+ d + n​ is thesame as ​d.addDays(n)​ where ​n​ is the number of days to add.
+
+ ●Complete the implementation of the ​str()​ function which returns a
+ string representation of the date object in the format "Mon, day, year"
+ For example, given adate object ​Date* d = new Date(2018, 9, 10)​, the
+ call ​d->str()​ returns thestring ​"Sep 10, 2018"​.
+
+ ●Overload ​operator<<​ using a ​friend​ function, such that given a data
+ object ​d​, astatement like ​cout << d;​ is valid and prints to the console
+ the string representationreturned by ​d.str()​.
+
+ ●Add a ​static​ method named ​fiveHolidays()​ that returns a vector of five
+ Datepointers (​std::vector<Date*>​) representing five holidays of your choosing.*/
