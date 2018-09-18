@@ -33,6 +33,7 @@ public:
         y++;
       }
     }
+
     day = d;
     month = m;
     year = y;
@@ -46,7 +47,42 @@ public:
 
   std::string str() {
     // TODO: complete this function implementation here.
-    return "";
+    std::stringstream sout;
+    std::string mon = " ";
+
+    while (mon == " "){
+        if (month = 1){
+            mon = "January";
+        }
+        if (month = 1){
+            mon = "January";
+        }
+        if (month = 1){
+            mon = "January";
+        }
+        if (month = 1){
+            mon = "January";
+        }
+        if (month = 1){
+            mon = "January";
+        }
+        if (month = 1){
+            mon = "January";
+        }
+        if (month = 1){
+            mon = "January";
+        }
+        if (month = 1){
+            mon = "January";
+        }
+        if (month = 1){
+            mon = "January";
+        }
+    }
+
+    sout << mon << day << year;
+
+    return sout.str();
   }
 
   int daysToDate(){
@@ -71,22 +107,26 @@ public:
   }
 
   // TODO: overload operator<< here
-  friend std::ostream& operator<<(std::ostream& out, Date& date)
+  friend std::ostream& operator<<(std::ostream& out, Date* date)
   {
       out << date->str() << std::endl;
       return out;
   }
 
   // TODO: define fiveHolidays function here
-  static fiveHolidays() {
-      std::vector<Date*> h(5);
-      h[0] = (2018, 9, 10);
-      h[1] = (2018, 9, 10);
-      h[2] = (2018, 9, 10);
-      h[3] = (2018, 9, 10);
-      h[4] = (2018, 9, 10);
+  static int fiveHolidays() {
+      std::vector<Date*> h;
+      h.push_back(new Date(2018,9,10));
+      h.push_back(new Date(2018,9,10));
+      h.push_back(new Date(2018,9,10));
+      h.push_back(new Date(2018,9,10));
+      h.push_back(new Date(2018,9,10));
 
-      return h;
+      for (std::vector<Date*>::const_iterator i = h.begin(); i != h.end(); i++){
+          std::cout << *i << std::endl;
+      }
+
+      return 0;
 
   }
 
