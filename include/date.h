@@ -9,10 +9,10 @@
 class Date {
 public:
   //TODO: Define one argument constructor here (year)
-  Date(int y, int m = 1, int d = 1): year(y), month(m), day(d){}
+  Date(int y): year(y), month(1), day(1){}
 
   //TODO: Define two argument constructor here (year and month)
-  Date(int y, int m, int d = 1): year(y), month(m), day(d){}
+  Date(int y, int m): year(y), month(m), day(1){}
 
   Date(int y, int m, int d): year(y), month(m), day(d){}
 
@@ -60,31 +60,35 @@ public:
     return days;
   }
 
-    Date& operator+(int n){
+  Date& operator+(int n){
     return addDays(n);
   }
 
   // TODO: Overload operator+ here
-  friend std::ostream& operator+(std::ostream& out, Date& date)
+  friend Date operator+(Date d, int n)
   {
-//    for(int v : range.nums) {
-//      out << v << " ";
-//    }
-//    out << std::endl;
-      return out;
+      return d.addDays(n);
   }
 
   // TODO: overload operator<< here
   friend std::ostream& operator<<(std::ostream& out, Date& date)
   {
-//    for(int v : range.nums) {
-//      out << v << " ";
-//    }
-//    out << std::endl;
-    return out;
+      out << date->str() << std::endl;
+      return out;
   }
 
   // TODO: define fiveHolidays function here
+  static fiveHolidays() {
+      std::vector<Date*> h(5);
+      h[0] = (2018, 9, 10);
+      h[1] = (2018, 9, 10);
+      h[2] = (2018, 9, 10);
+      h[3] = (2018, 9, 10);
+      h[4] = (2018, 9, 10);
+
+      return h;
+
+  }
 
 private:
   int year, month, day;
@@ -101,22 +105,22 @@ private:
 
 /*
 ●Add a second constructor that takes only a single ​year​ argument and
- initializes bothmonth​ and ​day​ to ​1​.
+ initializes both month​ and ​day​ to ​1​.
 
  ●Add a third constructor that takes two arguments for ​year​ and ​month​
- and initializesday​ to ​1​.
+ and initializes day​ to ​1​.
 
  ●Overload ​operator+​ such that given a date object ​d​, the expression ​
- d + n​ is thesame as ​d.addDays(n)​ where ​n​ is the number of days to add.
+ d + n​ is the same as ​d.addDays(n)​ where ​n​ is the number of days to add.
 
  ●Complete the implementation of the ​str()​ function which returns a
  string representation of the date object in the format "Mon, day, year"
- For example, given adate object ​Date* d = new Date(2018, 9, 10)​, the
- call ​d->str()​ returns thestring ​"Sep 10, 2018"​.
+ For example, given a date object ​Date* d = new Date(2018, 9, 10)​, the
+ call ​d->str()​ returns the string ​"Sep 10, 2018"​.
 
  ●Overload ​operator<<​ using a ​friend​ function, such that given a data
- object ​d​, astatement like ​cout << d;​ is valid and prints to the console
- the string representationreturned by ​d.str()​.
+ object ​d​, a statement like ​c out << d;​ is valid and prints to the console
+ the string representation returned by ​d.str()​.
 
  ●Add a ​static​ method named ​fiveHolidays()​ that returns a vector of five
- Datepointers (​std::vector<Date*>​) representing five holidays of your choosing.*/
+ Date pointers (​std::vector<Date*>​) representing five holidays of your choosing.*/
