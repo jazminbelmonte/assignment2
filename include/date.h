@@ -47,42 +47,14 @@ public:
 
   std::string str() {
     // TODO: complete this function implementation here.
-    std::stringstream sout;
-    std::string mon = " ";
 
-    while (mon == " "){
-        if (month = 1){
-            mon = "January";
-        }
-        if (month = 1){
-            mon = "January";
-        }
-        if (month = 1){
-            mon = "January";
-        }
-        if (month = 1){
-            mon = "January";
-        }
-        if (month = 1){
-            mon = "January";
-        }
-        if (month = 1){
-            mon = "January";
-        }
-        if (month = 1){
-            mon = "January";
-        }
-        if (month = 1){
-            mon = "January";
-        }
-        if (month = 1){
-            mon = "January";
-        }
-    }
+    std::string dateString = monthsarr[month-1];
+    dateString.append(" ");
+    dateString.append(std::to_string(day));
+    dateString.append(", ");
+    dateString.append(std::to_string(year));
 
-    sout << mon << day << year;
-
-    return sout.str();
+    return dateString;
   }
 
   int daysToDate(){
@@ -96,41 +68,37 @@ public:
     return days;
   }
 
-  Date& operator+(int n){
-    return addDays(n);
-  }
-
   // TODO: Overload operator+ here
-  friend Date operator+(Date d, int n)
-  {
-      return d.addDays(n);
-  }
+  Date& operator+(int n){
+        return addDays(n);
+      }
 
   // TODO: overload operator<< here
-  friend std::ostream& operator<<(std::ostream& out, Date* date)
+  friend std::ostream& operator<<(std::ostream& out, Date& d)
   {
-      out << date->str() << std::endl;
+      out << d.str();
       return out;
   }
 
   // TODO: define fiveHolidays function here
-  static int fiveHolidays() {
+  static std::vector<Date*> fiveHolidays() {
       std::vector<Date*> h;
-      h.push_back(new Date(2018,9,10));
-      h.push_back(new Date(2018,9,10));
-      h.push_back(new Date(2018,9,10));
-      h.push_back(new Date(2018,9,10));
-      h.push_back(new Date(2018,9,10));
+      h.push_back(new Date(2018,10,8));
+      h.push_back(new Date(2018,10,31));
+      h.push_back(new Date(2018,11,23));
+      h.push_back(new Date(2018,12,25));
+      h.push_back(new Date(2018,12,31));
 
-      for (std::vector<Date*>::const_iterator i = h.begin(); i != h.end(); i++){
-          std::cout << *i << std::endl;
+      for(Date* i : h){
+        std::cout << *i << std::endl;
       }
 
-      return 0;
-
+      return h;
   }
 
 private:
+    std::string monthsarr[12] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
   int year, month, day;
 
   static int daysInMonth(int y, int m){
@@ -142,25 +110,3 @@ private:
 
 #endif
 
-
-/*
-●Add a second constructor that takes only a single ​year​ argument and
- initializes both month​ and ​day​ to ​1​.
-
- ●Add a third constructor that takes two arguments for ​year​ and ​month​
- and initializes day​ to ​1​.
-
- ●Overload ​operator+​ such that given a date object ​d​, the expression ​
- d + n​ is the same as ​d.addDays(n)​ where ​n​ is the number of days to add.
-
- ●Complete the implementation of the ​str()​ function which returns a
- string representation of the date object in the format "Mon, day, year"
- For example, given a date object ​Date* d = new Date(2018, 9, 10)​, the
- call ​d->str()​ returns the string ​"Sep 10, 2018"​.
-
- ●Overload ​operator<<​ using a ​friend​ function, such that given a data
- object ​d​, a statement like ​c out << d;​ is valid and prints to the console
- the string representation returned by ​d.str()​.
-
- ●Add a ​static​ method named ​fiveHolidays()​ that returns a vector of five
- Date pointers (​std::vector<Date*>​) representing five holidays of your choosing.*/
