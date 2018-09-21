@@ -48,6 +48,8 @@ public:
   std::string str() {
     // TODO: complete this function implementation here.
 
+    //assigning the month keyword using the array and then appending
+    // things to the string that will be returned to fit the assigned format
     std::string dateString = monthsarr[month-1];
     dateString.append(" ");
     dateString.append(std::to_string(day));
@@ -80,6 +82,7 @@ public:
       return out;
   }
 
+  //Five holidays: indigenous peoples day, halloween, thanksgiving, christmas, and new years eve
   // TODO: define fiveHolidays function here
   static std::vector<Date*> fiveHolidays() {
       std::vector<Date*> h;
@@ -97,6 +100,7 @@ public:
   }
 
 private:
+    //created an array to assign the month when printing out the dates
     std::string monthsarr[12] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
   int year, month, day;
